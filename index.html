@@ -1,17 +1,112 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <link rel="stylesheet" href="styke.css">
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Algo está a punto de comenzar</title>
-  <!--Enlace a css-->
-  <link rel="stylesheet" href="style.css">
+
+</html>
+
+<head></head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Juniors | Experiencias que se contruye</title>
+
+<!-- Tipografías de Juniors -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossoring>
+
+<link
+  href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..700&family=Hanken+Grotesk:wght@400;500;600;700&display=swap"
+  rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+
 </head>
+
 <body>
-  <canvas id="binaryCanvas"></canvas>
-  <div class="mensaje">Algo está a punto de comenzar...</div>
-  <!--Enlace a JavaScript-->
-  <script src="script.js"></script>
+
+  <main>
+
+    <!-- Sección: El reto -->
+    <section id="el-reto" class="reto">
+
+      <div class="reto_contenedor">
+
+        <!-- Composición visual -->
+
+        <div class="reto__visual">
+
+          <svg class="reto__grafico" viewBox="0 0 400 400" role="img" aria-labelledby="reto-grafico-titulo">
+            <title id="reto-grafico-titulo">
+              Juniors rompe el ciclo de la falta de experiencia
+            </title>
+
+            <!-- Trayectoria circular -->
+            <defs>
+              <path id="reto-ruta-circular" d="M 200,200 m -145,0
+                   a 145,145 0 1,1 290,0
+                   a 145,145 0 1,1 -290,0" />
+            </defs>
+
+            <!-- Texto alrededor del círculo -->
+            <text class="reto__texto-circular">
+              <textPath href="#reto-ruta-circular" textLength="911" lengthAdjust="spacing">
+                SIN EXPERIENCIA · SIN OPORTUNIDADES · SIN EXPERIENCIA · SIN OPORTUNIDAD ·
+              </textPath>
+            </text>
+
+            <!-- Mensaje central -->
+            <text x="200" y="188" text-anchor="middle" class="reto__texto-central">
+              <tspan x="200" dy="0">Juniors</tspan>
+              <tspan x="200" dy="30">rompe el</tspan>
+              <tspan x="200" dy="30">ciclo.</tspan>
+            </text>
+
+            <!-- Fondo de la flecha -->
+            <circle cx="330" cy="70" r="25" class="reto__flecha-fondo" />
+
+            <!-- Flecha -->
+            <path d="M318 82 L342 58 M324 58 H342 V76" class="reto__flecha" />
+
+          </svg>
+
+        </div>
+
+        <!-- Contenido de la sección -->
+        <div class="reto__contenido">
+
+          <h2>
+            <span class="reto__titulo-inicial">
+              Te piden experiencia.
+            </span>
+            <span class="reto__titulo-destacado">
+              Pero pocas veces te dejan construirla.
+            </span>
+          </h2>
+
+          <p>
+            El talento junior necesita algo más que conocimiento:
+            necesita enfrentarse a problemas reales, recibir
+            criterio de personas experimentadas y generar
+            evidencia de lo que sabe hacer.
+          </p>
+
+          <p>Juniors crea ese espacio</p>
+
+          <ul class="reto__lista">
+            <li>Trabajo real que genera evidencia.</li>
+            <li>Supervisión de profesionales experimentados.</li>
+            <li>Criterios claros para saber qué significa entregar bien.</li>
+          </ul>
+
+        </div>
+
+      </div>
+
+
+    </section>
+
+  </main>
+
 </body>
+
 </html>
