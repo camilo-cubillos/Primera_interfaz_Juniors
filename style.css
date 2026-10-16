@@ -46,7 +46,7 @@ body {
 }
 
 /* Contenedor principal */
-.reto_contenedor {
+.reto__contenedor {
   max-width: 1200px;
   margin: 0 auto;
 
@@ -58,7 +58,7 @@ body {
 }
 
 /* Columna izquierda */
-.reto_visual {
+.reto__visual {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -66,7 +66,7 @@ body {
 }
 
 /* Columna derecha */
-.reto_contenido {
+.reto__contenido {
   min-width: 0;
 }
 
@@ -103,7 +103,7 @@ body {
   }
 
   .reto__contenido h2 {
-    font-size: clamp(1.8ram, 8vw, 2.5rem);
+    font-size: clamp(1.8rem 8vw, 2.5rem);
     line-height: 1.15;
     overflow-wrap: break-word;
   }
