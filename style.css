@@ -103,7 +103,7 @@ body {
   }
 
   .reto__contenido h2 {
-    font-size: clamp(1.8rem 8vw, 2.5rem);
+    font-size: clamp(1.8rem, 8vw, 2.5rem);
     line-height: 1.15;
     overflow-wrap: break-word;
   }
@@ -116,11 +116,6 @@ body {
   .reto__lista li {
     font-size: 0.95rem;
     line-height: 1.5;
-  }
-
-  .reto_contenedor {
-    grid-template-columns: 1fr;
-    gap: 24px;
   }
 }
 
@@ -169,23 +164,17 @@ body {
 }
 
 /* Separadores entre los puntos */
+
+/* Elementos y separadores de la lista */
 .reto__lista li {
   position: relative;
-  padding: 16px 0 16px 30px;
+  padding: 16px 0 16px 28px;
   font-size: 1.05rem;
   line-height: 1.6;
   color: var(--color-azul-profundo);
   border-bottom: 1px solid #E6E1DB;
 }
 
-/* Cada punto */
-.reto__lista li {
-  position: relative;
-  padding-left: 28px;
-  font-size: 1.05rem;
-  line-height: 1.6;
-  color: var(--color-azul-profundo);
-}
 
 /* Indicadores de verificación */
 .reto__lista li::before {
