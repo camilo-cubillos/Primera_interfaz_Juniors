@@ -1,28 +1,302 @@
- * { margin:0; padding:0; box-sizing:border-box; }
-    html,body { height:100%; overflow:hidden; background:#000; font-family:monospace; }
+/* ============================================
+          JUNIORS - ESTILOS GENERALES
+   ============================================ */
 
-    /* canvas full-screen */
-    canvas#binaryCanvas {
-      position:fixed;
-      inset:0;            /* top:0; right:0; bottom:0; left:0; */
-      width:100%;
-      height:100%;
-      z-index:0;
-      display:block;
-    }
+:root {
+  --color-fondo: #FAF6EC;
+  --color-azul: #1346AA;
+  --color-azul-profundo: #0A1E54;
+  --color-dorado: #F4C24C;
+  --color-azul-claro: #CBDDF6;
+  --color-texto: #15171c;
+}
 
-    /* texto centrado y visible encima del canvas */
-    .mensaje {
-      position:fixed;
-      top:50%;
-      left:50%;
-      transform:translate(-50%,-50%);
-      color:#00aaff;         /* azul */
-      font-size:3.0rem;
-      font-weight:700;
-      text-align:center;
-      z-index:9999;          /* importante: muy por encima */
-      pointer-events:none;
-      -webkit-text-stroke: 0.5px rgba(0,0,0,0.2);
-      text-shadow: 0 0 20px rgba(0, 170, 255, 0.837);
-    }
+/* Reinicio básico de estilos */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
+  font-family: "Hanken Grotesk", sans-serif;
+  min-height: 100vh;
+}
+
+/* Accesibility */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* ======================================
+            SECCIÓN: EL RETO
+   ====================================== */
+
+.reto {
+  width: 100%;
+  padding: 80px 24px;
+  background-color: var(--color-fondo);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+/* Contenedor principal */
+.reto__contenedor {
+  max-width: 1200px;
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 64px;
+  width: 100%;
+}
+
+/* Columna izquierda */
+.reto__visual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+}
+
+/* Columna derecha */
+.reto__contenido {
+  min-width: 0;
+}
+
+/* ==================================
+      EL RETO - RESPONSIVE
+   ================================== */
+
+@media (max-width: 768px) {
+
+  .reto {
+    width: 100%;
+    padding: 60px 20px;
+  }
+
+  .reto__contenedor {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 40px;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .reto__visual,
+  .reto__contenido {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .reto__grafico {
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+    margin: 0 auto;
+  }
+
+  .reto__contenido h2 {
+    font-size: clamp(1.8rem, 8vw, 2.5rem);
+    line-height: 1.15;
+    overflow-wrap: break-word;
+  }
+
+  .reto__contenido p {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  .reto__lista li {
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+}
+
+
+/* ===================================
+     EL RETO - CONTENIDO
+   =================================== */
+
+/*  Título principal */
+.reto__contenido h2 {
+  font-family: "Fraunces", Georgia, serif;
+  font-size: clamp(2rem, 3.5vw, 3.25rem);
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  color: var(--color-azul-profundo);
+  margin-bottom: 28px;
+}
+
+/* Segunda parte del titulo */
+.reto__titulo-destacado {
+  color: var(--color-azul);
+}
+
+/* Párrafos */
+.reto__contenido p {
+  font-size: 1.125rem;
+  line-height: 1.75;
+  color: var(--color-texto);
+  margin-bottom: 20px;
+}
+
+/* Separación del mensaje de cierre */
+.reto__contenido p+p {
+  margin-top: 16px
+}
+
+/* Lista de los tres principios */
+.reto__lista {
+  list-style: none;
+  margin-top: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border-top: 1px solid #E6E1D8;
+}
+
+/* Separadores entre los puntos */
+
+/* Elementos y separadores de la lista */
+.reto__lista li {
+  position: relative;
+  padding: 16px 0 16px 28px;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--color-azul-profundo);
+  border-bottom: 1px solid #E6E1DB;
+}
+
+
+/* Indicadores de verificación */
+.reto__lista li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 20px;
+  height: 20px;
+
+  border: 1.5px solid var(--color-azul);
+  border-radius: 50%;
+
+  color: var(--color-azul);
+  background-color: transparent;
+
+  font-family: Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+/* Ajustes para dispositivos móviles */
+@media (max-width: 768px) {
+  .reto__contenido h2 {
+    margin-bottom: 24px;
+  }
+
+  .reto__contenido p {
+    font-size: 1rem;
+  }
+
+  .reto__lista li {
+    font-size: 1rem;
+  }
+}
+
+
+/* ========================================
+   EL RETO - COMPOSICIÓN CIRCULAR
+   ======================================== */
+
+/* Gráfico principal */
+.reto__grafico {
+  display: block;
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  overflow: visible;
+}
+
+/* Texto alrededor del círculo */
+.reto__texto-circular {
+  fill: var(--color-azul-profundo);
+  font-family: "Hanken Grotesk", sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 3px;
+}
+
+/* Mensaje del centro */
+.reto__texto-central {
+  fill: var(--color-azul);
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 28px;
+  font-weight: 500;
+}
+
+/* Fondo de la flecha */
+.reto__flecha-fondo {
+  fill: var(--color-azul);
+}
+
+/* Flecha */
+.reto__flecha {
+  fill: none;
+  stroke: #FFFFFF;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Adaptación móvil */
+@media (max-width: 768px) {
+  .reto__grafico {
+    max-width: 300px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .reto {
+    min-height: auto;
+    display: block;
+  }
+}
+
+/* Frases del titulo */
+.reto__titulo-inicial,
+.reto__titulo-destacado {
+  display: block;
+}
+
+
+/* Ajustes finales para móviles */
+@media (max-width: 768px) {
+  .reto__contenido h2 {
+    font-size: clamp(1.8rem, 8vw, 2.5rem);
+    margin-bottom: 24px;
+  }
+
+  .reto__contenido p {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  .reto__contenedor {
+    gap: 24px;
+  }
+}
