@@ -40,7 +40,7 @@ body {
   width: 100%;
   padding: 80px 24px;
   background-color: var(--color-fondo);
-  min-height: 100vh;
+  min-height: auto;
   display: flex;
   align-items: center;
 }
@@ -299,4 +299,134 @@ body {
   .reto__contenedor {
     gap: 24px;
   }
+}
+
+
+/* ========================================
+   SECCIÓN: QUIÉNES SOMOS + PRINCIPIOS
+   ======================================== */
+
+.quienes-somos {
+  width: 100%;
+  padding: 64px 24px;
+  background-color: #FFFFFF;
+}
+
+.quienes-somos__contenedor {
+  width: 100%;
+  max-width: 1360px;
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: center;
+  gap: 48px;
+}
+
+.quienes-somos__contenido,
+.quienes-somos__principios {
+  min-width: 0;
+}
+
+
+/* Etiqueta superior: QUIÉNES SOMOS */
+.quienes-somos__etiqueta {
+  display: block;
+  margin-bottom: 20px;
+  font-family: "Hanken Grotesk", sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--color-azul);
+}
+
+/* Título principal */
+.quienes-somos__titulo {
+  font-family: "Fraunces", Georgia, serif;
+  font-size: clamp(2.5rem, 4vw, 4rem);
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: var(--color-texto);
+  margin-bottom: 24px;
+}
+
+/* Frase destacada en azul */
+.quienes-somos__destacado {
+  color: var(--color-azul);
+}
+
+/* Párrafos de presentación */
+.quienes-somos__contenido p {
+  font-family: "Hanken Grotesk", sans-serif;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--color-texto);
+  margin-bottom: 18px;
+}
+
+
+/* Columna derecha: principios */
+.quienes-somos__principios {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Tarjetas */
+.quienes-somos__tarjeta {
+  background-color: #FAF6EC;
+  border: 1px solid #EAE5DA;
+  border-radius: 12px;
+  padding: 32px;
+}
+
+/* Títulos de las tarjetas */
+.quienes-somos__tarjeta h3 {
+  font-family: "Hanken Grotesk", sans-serif;
+  font-size: 1.125rem;
+  font-weight: 700;
+  line-height: 1.4;
+  color: var(--color-texto);
+  margin-bottom: 10px;
+}
+
+/* Descripciones */
+.quienes-somos__tarjeta p {
+  font-family: "Hanken Grotesk", sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--color-texto);
+}
+
+
+/* ========================================
+   QUIÉNES SOMOS - RESPONSIVE
+   ======================================== */
+
+@media (max-width: 768px) {
+  .quienes-somos {
+    padding: 60px 20px;
+  }
+
+  .quienes-somos__contenedor {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 40px;
+  }
+
+
+  .quienes-somos__tarjeta {
+    padding: 24px;
+  }
+
+  .quienes-somos__tarjeta h3 {
+    font-size: 1rem;
+    margin-bottom: 10px;
+  }
+
+  .quienes-somos__tarjeta p {
+    font-size: 0.9375rem;
+    line-height: 1.6;
+  }
+
 }
