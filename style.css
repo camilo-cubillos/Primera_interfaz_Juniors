@@ -39,7 +39,7 @@ body {
 .reto {
   width: 100%;
   padding: 80px 24px;
-  background-color: var(--color-fondo);
+  background-color: #FFFFFF;
   min-height: auto;
   display: flex;
   align-items: center;
@@ -68,6 +68,19 @@ body {
 /* Columna derecha */
 .reto__contenido {
   min-width: 0;
+}
+
+/* Etiqueta superior: EL RETO DEL MERCADO */
+.reto__etiqueta {
+  display: block;
+  margin-bottom: 16px;
+  font-family: "Hanken Grotesk", sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #1346AA;
 }
 
 /* ==================================
@@ -226,7 +239,7 @@ body {
 .reto__grafico {
   display: block;
   width: 100%;
-  max-width: 400px;
+  max-width: 460px;
   height: auto;
   overflow: visible;
 }
