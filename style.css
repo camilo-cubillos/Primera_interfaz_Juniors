@@ -443,3 +443,183 @@ body {
   }
 
 }
+
+/* ========================================
+   SECCIÓN: CONTACTO
+   ======================================== */
+
+.contacto {
+  width: 100%;
+  padding: 96px 24px;
+  background-color: var(--color-azul-profundo);
+  background-image: radial-gradient(rgba(203, 221, 246, 0.18) 1px, transparent 1px);
+  background-size: 24px 24px;
+  color: #FFFFFF;
+}
+
+/* Contenedor principal */
+.contacto__contenedor {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  align-items: end;
+  gap: 64px;
+}
+
+.contacto__contenido,
+.contacto__datos {
+  min-width: 0;
+}
+
+/* Título principal */
+.contacto__titulo {
+  max-width: 12em;
+  font-family: "Fraunces", Georgia, serif;
+  font-size: clamp(2.25rem, 4vw, 3.5rem);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  margin-bottom: 24px;
+}
+
+/* Texto de apoyo */
+.contacto__contenido p {
+  max-width: 30em;
+  font-family: "Hanken Grotesk", sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--color-azul-claro);
+  margin-bottom: 32px;
+}
+
+/* Botón: Hablar con Juniors */
+.contacto__boton {
+  display: inline-block;
+  padding: 16px 28px;
+  border-radius: 999px;
+  background-color: #FFFFFF;
+  font-family: "Hanken Grotesk", sans-serif;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--color-azul);
+  text-decoration: none;
+  transition: transform var(--dur-rapida, 200ms) ease;
+}
+
+/* Botón al pasar el cursor o con teclado */
+.contacto__boton:hover,
+.contacto__boton:focus-visible {
+  transform: translateY(-2px);
+}
+
+.contacto__boton:focus-visible {
+  outline: 3px solid var(--color-dorado);
+  outline-offset: 4px;
+}
+
+/* Columna derecha: datos de contacto */
+.contacto__datos {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Cada dato de contacto */
+.contacto__dato a,
+.contacto__dato span:not(.contacto__etiqueta) {
+  font-family: "Hanken Grotesk", sans-serif;
+  font-size: 1.125rem;
+  font-weight: 500;
+  color: #FFFFFF;
+  text-decoration: none;
+}
+
+.contacto__dato a:hover,
+.contacto__dato a:focus-visible {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+/* Etiquetas: CORREO y REDES */
+.contacto__etiqueta {
+  display: block;
+  margin-bottom: 8px;
+  font-family: "Hanken Grotesk", sans-serif;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--color-azul-claro);
+}
+
+
+/* ========================================
+   SECCIÓN: FOOTER
+   ======================================== */
+
+.pie {
+  width: 100%;
+  padding: 32px 24px;
+  background-color: var(--color-fondo);
+}
+
+/* Contenedor principal */
+.pie__contenedor {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+/* Marca y dominio */
+.pie__marca img {
+  display: block;
+  width: 96px;
+  height: auto;
+  margin-bottom: 8px;
+}
+
+/* Dominio y productos */
+.pie__dominio,
+.pie__productos {
+  font-family: "Hanken Grotesk", sans-serif;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--color-azul-profundo);
+}
+
+
+/* ========================================
+   CONTACTO + FOOTER - RESPONSIVE
+   ======================================== */
+
+@media (max-width: 768px) {
+  .contacto {
+    padding: 60px 20px;
+  }
+
+  .contacto__contenedor {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 40px;
+  }
+
+  .contacto__titulo {
+    font-size: clamp(1.8rem, 8vw, 2.5rem);
+  }
+
+  .pie {
+    padding: 28px 20px;
+  }
+
+  .pie__contenedor {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
