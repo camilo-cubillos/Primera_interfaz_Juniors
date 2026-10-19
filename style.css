@@ -360,36 +360,59 @@ html {
 
 @media (max-width: 768px) {
 
+  .encabezado {
+    padding: 28px 20px;
+  }
+
   .encabezado__nav {
     display: none;
   }
 
-  /* El contenido va arriba: los errores ocupan el centro */
+  /* Contenido arriba y errores debajo, en el flujo: nunca se cruzan */
   .hero {
-    align-items: flex-start;
-    padding: 120px 20px 200px;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    padding: 120px 20px 168px;
+  }
+
+  /* Titular alineado a la izquierda con el logotipo */
+  .hero__contenido {
+    width: 100%;
+  }
+
+  .hero__titular > .hero__titulo {
+    justify-self: start;
+  }
+
+  /* Capa de errores debajo del subtítulo */
+  .hero__errores {
+    position: relative;
+    inset: auto;
+    height: 260px;
+    margin-top: 40px;
   }
 
   .hero__error--1 {
-    top: 34%;
+    top: 0;
+    left: auto;
+    right: 0;
+  }
+
+  .hero__error--2 {
+    top: 26%;
+    left: 0;
+  }
+
+  .hero__error--3 {
+    top: 52%;
     left: auto;
     right: 4%;
   }
 
-  .hero__error--2 {
-    top: 45%;
-    left: 6%;
-  }
-
-  .hero__error--3 {
-    top: 56%;
-    left: auto;
-    right: 6%;
-  }
-
   .hero__error--4 {
-    top: 67%;
-    left: 4%;
+    top: 78%;
+    left: 2%;
   }
 
   .hero__cta {
