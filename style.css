@@ -316,6 +316,180 @@ body {
 
 
 /* ========================================
+   SECCIÓN: SOLUCIONES
+   ======================================== */
+
+.soluciones {
+  width: 100%;
+  padding: 96px 24px;
+  background-color: var(--color-fondo);
+}
+
+/* Contenedor principal */
+.soluciones__contenedor {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Encabezado de la sección */
+.soluciones__encabezado {
+  max-width: 660px;
+  margin-bottom: 48px;
+}
+
+/* Etiqueta superior: SOLUCIONES */
+.soluciones__etiqueta {
+  display: block;
+  margin-bottom: 16px;
+  font-family: "Hanken Grotesk", sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--color-azul);
+}
+
+/* Título principal */
+.soluciones__titulo {
+  font-family: "Fraunces", Georgia, serif;
+  font-size: clamp(2.25rem, 4vw, 3.5rem);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: var(--color-texto);
+}
+
+/* Frase destacada en azul */
+.soluciones__destacado {
+  color: var(--color-azul);
+}
+
+/* Tarjetas en dos columnas */
+.soluciones__tarjetas {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 16px;
+}
+
+/* Tarjeta: Juniors Unblocks */
+.soluciones__tarjeta {
+  background-color: #FFFFFF;
+  border: 1px solid #EAE5DA;
+  border-radius: 16px;
+  padding: 40px;
+  color: var(--color-texto);
+}
+
+/* Tarjeta destacada: Juniors Pods */
+.soluciones__tarjeta--destacada {
+  background-color: var(--color-azul);
+  border-color: var(--color-azul);
+  color: #FFFFFF;
+}
+
+/* Nombre del producto */
+.soluciones__producto {
+  display: block;
+  margin-bottom: 20px;
+  font-family: "Hanken Grotesk", sans-serif;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--color-azul-profundo);
+}
+
+.soluciones__tarjeta--destacada .soluciones__producto {
+  color: var(--color-azul-claro);
+}
+
+/* Títulos de las tarjetas */
+.soluciones__tarjeta h3 {
+  font-family: "Fraunces", Georgia, serif;
+  font-size: clamp(1.5rem, 2.2vw, 2rem);
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--color-azul-profundo);
+  margin-bottom: 16px;
+}
+
+.soluciones__tarjeta--destacada h3 {
+  color: #FFFFFF;
+}
+
+/* Descripciones */
+.soluciones__tarjeta p {
+  font-family: "Hanken Grotesk", sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 28px;
+}
+
+/* Lista de beneficios */
+.soluciones__lista {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Elementos de la lista */
+.soluciones__lista li {
+  position: relative;
+  padding-left: 14px;
+  font-family: "Hanken Grotesk", sans-serif;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+/* Punto separador antes de cada beneficio */
+.soluciones__lista li::before {
+  content: "·";
+  position: absolute;
+  left: 0;
+  font-weight: 700;
+}
+
+
+/* ========================================
+   SOLUCIONES - RESPONSIVE
+   ======================================== */
+
+@media (max-width: 768px) {
+  .soluciones {
+    padding: 60px 20px;
+  }
+
+  .soluciones__encabezado {
+    margin-bottom: 32px;
+  }
+
+  .soluciones__titulo {
+    font-size: clamp(1.8rem, 8vw, 2.5rem);
+  }
+
+  .soluciones__tarjetas {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+  }
+
+  .soluciones__tarjeta {
+    padding: 28px 24px;
+  }
+
+  .soluciones__tarjeta h3 {
+    font-size: 1.5rem;
+  }
+
+  .soluciones__tarjeta p {
+    font-size: 0.9375rem;
+    margin-bottom: 20px;
+  }
+}
+
+
+/* ========================================
    SECCIÓN: QUIÉNES SOMOS + PRINCIPIOS
    ======================================== */
 
