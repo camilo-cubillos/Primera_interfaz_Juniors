@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
   <link
-    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..700&family=Hanken+Grotesk:wght@400;500;600;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,200..700,0..100,0..1&family=Hanken+Grotesk:wght@400;500;600;700&display=swap"
     rel="stylesheet">
 
   <link rel="stylesheet" href="./style.css">
@@ -20,11 +20,81 @@
 
 <body>
 
-  <!-- Header | Responsable: Nicolle -->
+  <!-- Header | Responsable: Daniel -->
+  <header class="encabezado">
+
+    <!-- Logotipo -->
+    <a class="encabezado__logo" href="#inicio" aria-label="Juniors, ir al inicio">
+      <img src="./assets/logotipo-blanco.png" alt="Juniors" width="600" height="155">
+    </a>
+
+    <!-- Navegación principal -->
+    <nav class="encabezado__nav" aria-label="Navegación principal">
+      <a href="#el-reto">El reto</a>
+      <a href="#soluciones">Soluciones</a>
+      <a href="#quienes-somos">Quiénes somos</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+
+  </header>
 
   <main>
 
-    <!-- Hero | Responsable: Nicolle -->
+    <!-- Sección: Hero | Responsable: Daniel -->
+    <section id="inicio" class="hero" aria-labelledby="hero-titulo">
+
+      <!-- Contenido principal -->
+      <div class="hero__contenido">
+
+        <!-- Titular: la copia invisible reserva el ancho para que la sonrisa no mueva el subtítulo -->
+        <div class="hero__titular">
+          <span class="hero__titulo hero__titulo--medida" aria-hidden="true">¿Bloqueado?</span>
+          <h1 id="hero-titulo" class="hero__titulo">¿Bloqueado?</h1>
+        </div>
+
+        <p class="hero__subtitulo">
+          Resuélvelo con alguien que ya pasó por ahí.
+        </p>
+
+      </div>
+
+      <!-- Errores flotantes (decorativos) -->
+      <div class="hero__errores" aria-hidden="true">
+        <span class="hero__error hero__error--claro hero__error--1">TypeError: undefined is not a function</span>
+        <span class="hero__error hero__error--azul hero__error--2">CORS policy: blocked</span>
+        <span class="hero__error hero__error--profundo hero__error--3">Segmentation fault</span>
+        <span class="hero__error hero__error--claro hero__error--4">Cannot connect to database</span>
+      </div>
+
+      <!-- CTA principal: el destino se agrega en data-destino -->
+      <a class="hero__cta" href="#" data-destino="" aria-label="Agendar sesión" aria-disabled="true">
+
+        <svg class="hero__cta-grafico" viewBox="0 0 120 120" aria-hidden="true">
+
+          <!-- Trayectoria circular -->
+          <defs>
+            <path id="hero-ruta-circular" d="M 60,60 m -46,0
+                    a 46,46 0 1,1 92,0
+                    a 46,46 0 1,1 -92,0" />
+          </defs>
+
+          <!-- Texto alrededor del círculo -->
+          <text class="hero__cta-texto">
+            <textPath href="#hero-ruta-circular" textLength="289" lengthAdjust="spacing">
+              AGENDAR SESIÓN · AGENDAR SESIÓN ·
+            </textPath>
+          </text>
+
+        </svg>
+
+        <!-- Flecha -->
+        <svg class="hero__cta-flecha" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M7 17 L17 7 M8 7 H17 V16" />
+        </svg>
+
+      </a>
+
+    </section>
 
     <!-- Sección: El reto -->
     <section id="el-reto" class="reto">
@@ -249,6 +319,8 @@
   <!-- Footer | Responsable: Nicolle-->
 
 
+  <!-- Interacción del hero -->
+  <script src="./hero.js" defer></script>
 </body>
 
 </html>

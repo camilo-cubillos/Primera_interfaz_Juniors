@@ -9,6 +9,15 @@
   --color-dorado: #F4C24C;
   --color-azul-claro: #CBDDF6;
   --color-texto: #15171c;
+
+  /* Movimiento y sonrisa: copiados de brand-design/tokens/juniors-tokens.css */
+  --dur-rapida: 200ms;
+  --dur-lenta: 500ms;
+  --ease-entrada: cubic-bezier(.16, 1, .3, 1);
+  --ease-ui: cubic-bezier(.33, 1, .68, 1);
+  --desplazamiento-bloque: 16px;
+  --fraunces-recta: "opsz" 60, "SOFT" 0, "WONK" 0;
+  --fraunces-sonrisa: "opsz" 120, "SOFT" 60, "WONK" 1;
 }
 
 /* Reinicio básico de estilos */
@@ -25,12 +34,421 @@ body {
   min-height: 100vh;
 }
 
+/* Desplazamiento suave entre secciones */
+html {
+  scroll-behavior: smooth;
+}
+
 /* Accesibility */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
   }
 }
+
+
+/* ======================================
+            SECCIÓN: HEADER
+   ====================================== */
+
+.encabezado {
+  position: absolute;
+  inset: 0 0 auto 0;
+  z-index: 10;
+  width: 100%;
+  max-width: 1048px;
+  margin: 0 auto;
+  padding: 28px 24px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+/* Logotipo blanco */
+.encabezado__logo img {
+  display: block;
+  width: 116px;
+  height: auto;
+}
+
+/* Navegación principal */
+.encabezado__nav {
+  display: flex;
+  gap: 32px;
+}
+
+/* Enlaces de la navegación */
+.encabezado__nav a {
+  font-family: "Hanken Grotesk", sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #FFFFFF;
+  text-decoration: none;
+  opacity: 0.85;
+  transition: opacity var(--dur-rapida) var(--ease-ui);
+}
+
+/* Enlace activo al pasar el cursor o con teclado */
+.encabezado__nav a:hover,
+.encabezado__nav a:focus-visible {
+  opacity: 1;
+  text-decoration: underline;
+  text-underline-offset: 6px;
+}
+
+
+/* ======================================
+            SECCIÓN: HERO
+   ====================================== */
+
+.hero {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100svh;
+  padding: 100px 24px;
+  background-color: var(--color-azul);
+  color: #FFFFFF;
+  overflow: hidden;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Contenedor: toma el ancho del titular y queda centrado */
+.hero__contenido {
+  --titulo-tamano: clamp(3.5rem, 15.7vw, 13rem);
+
+  position: relative;
+  z-index: 2;
+  width: fit-content;
+}
+
+/* Titular y su copia invisible en la misma celda */
+.hero__titular {
+  display: grid;
+}
+
+.hero__titular>.hero__titulo {
+  grid-area: 1 / 1;
+  justify-self: center;
+}
+
+/* Título principal: ¿Bloqueado? */
+.hero__titulo {
+  font-family: "Fraunces", Georgia, serif;
+  font-size: var(--titulo-tamano);
+  font-weight: 200;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+  font-variation-settings: var(--fraunces-recta);
+  transition: font-variation-settings 800ms cubic-bezier(.45, 0, .25, 1);
+}
+
+/* Sonrisa de Fraunces al pasar el cursor */
+.hero__titulo:hover {
+  font-variation-settings: var(--fraunces-sonrisa);
+}
+
+/* Copia invisible: solo reserva el ancho en reposo */
+.hero__titulo--medida {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* Subtítulo */
+.hero__subtitulo {
+  max-width: 12.5em;
+  margin-top: calc(var(--titulo-tamano) * 0.3);
+  padding-left: calc(var(--titulo-tamano) * 0.045);
+  font-family: "Hanken Grotesk", sans-serif;
+  font-size: clamp(1.125rem, 2vw, 1.5rem);
+  line-height: 1.35;
+}
+
+
+/* ========================================
+   HERO - ERRORES FLOTANTES
+   ======================================== */
+
+/* Capa de errores sobre el hero */
+.hero__errores {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+}
+
+/* Etiqueta de error */
+.hero__error {
+  position: absolute;
+  padding: 10px 16px;
+  border-radius: 12px;
+  font-family: "Hanken Grotesk", sans-serif;
+  font-size: clamp(0.75rem, 1.1vw, 0.9375rem);
+  font-weight: 500;
+  white-space: nowrap;
+  box-shadow: 0 8px 24px rgba(10, 30, 84, 0.25);
+  rotate: var(--giro, 0deg);
+
+  animation:
+    hero-error-entrada var(--dur-lenta) var(--ease-entrada) backwards,
+    hero-error-flota var(--ciclo, 7s) ease-in-out infinite alternate;
+  animation-delay: var(--retraso, 0ms), calc(var(--retraso, 0ms) + var(--dur-lenta));
+}
+
+/* Colores de las etiquetas */
+.hero__error--claro {
+  background-color: #FFFFFF;
+  color: var(--color-azul-profundo);
+}
+
+.hero__error--azul {
+  background-color: var(--color-azul-claro);
+  color: var(--color-azul-profundo);
+}
+
+.hero__error--profundo {
+  background-color: var(--color-azul-profundo);
+  color: #FFFFFF;
+}
+
+/* Posiciones tomadas del diseño aprobado */
+.hero__error--1 {
+  top: 19%;
+  left: 70%;
+  --giro: 4deg;
+  --ciclo: 7s;
+  --retraso: 0ms;
+}
+
+.hero__error--2 {
+  top: 38%;
+  left: 52%;
+  --giro: -5deg;
+  --ciclo: 8.5s;
+  --retraso: 60ms;
+}
+
+.hero__error--3 {
+  top: 53%;
+  left: 82%;
+  --giro: -3deg;
+  --ciclo: 6.5s;
+  --retraso: 120ms;
+}
+
+.hero__error--4 {
+  top: 70%;
+  left: 50%;
+  --giro: 3deg;
+  --ciclo: 9s;
+  --retraso: 180ms;
+}
+
+/* Entrada de las etiquetas */
+@keyframes hero-error-entrada {
+  from {
+    opacity: 0;
+    translate: 0 var(--desplazamiento-bloque);
+  }
+
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
+/* Flotación mínima en ciclos lentos */
+@keyframes hero-error-flota {
+  from {
+    translate: 0 0;
+    rotate: var(--giro, 0deg);
+  }
+
+  50% {
+    translate: 5px -6px;
+  }
+
+  to {
+    translate: -3px -11px;
+    rotate: calc(var(--giro, 0deg) + 1.5deg);
+  }
+}
+
+
+/* ========================================
+   HERO - CTA CIRCULAR
+   ======================================== */
+
+/* Botón circular */
+.hero__cta {
+  position: absolute;
+  right: max(24px, calc((100% - 1200px) / 2 + 24px));
+  bottom: 48px;
+  z-index: 4;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background-color: var(--color-azul-claro);
+  color: var(--color-azul-profundo);
+  text-decoration: none;
+  transition: transform var(--dur-rapida) var(--ease-ui);
+
+  display: grid;
+  place-items: center;
+}
+
+/* Botón al pasar el cursor o con teclado */
+.hero__cta:hover,
+.hero__cta:focus-visible {
+  transform: scale(1.05);
+}
+
+.hero__cta:focus-visible {
+  outline: 3px solid var(--color-dorado);
+  outline-offset: 4px;
+}
+
+/* Gráfico del texto circular: gira lento */
+.hero__cta-grafico {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  animation: hero-cta-gira 30s linear infinite;
+}
+
+/* Texto alrededor del círculo */
+.hero__cta-texto {
+  fill: currentColor;
+  font-family: "Hanken Grotesk", sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+}
+
+/* Flecha */
+.hero__cta-flecha {
+  width: 32px;
+  height: 32px;
+}
+
+.hero__cta-flecha path {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Giro del texto circular */
+@keyframes hero-cta-gira {
+  to {
+    rotate: 360deg;
+  }
+}
+
+
+/* ==================================
+      HEADER + HERO - RESPONSIVE
+   ================================== */
+
+@media (max-width: 768px) {
+
+  .encabezado {
+    padding: 28px 20px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .encabezado__nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px 4px;
+  }
+
+  /* Contenido arriba y errores debajo, en el flujo: nunca se cruzan */
+  .hero {
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    padding: 120px 20px 168px;
+  }
+
+  /* Titular alineado a la izquierda con el logotipo */
+  .hero__contenido {
+    width: 100%;
+  }
+
+  .hero__titular>.hero__titulo {
+    justify-self: start;
+  }
+
+  /* Capa de errores debajo del subtítulo */
+  .hero__errores {
+    position: relative;
+    inset: auto;
+    height: 260px;
+    margin-top: 40px;
+  }
+
+  .hero__error--1 {
+    top: 0;
+    left: auto;
+    right: 0;
+  }
+
+  .hero__error--2 {
+    top: 26%;
+    left: 0;
+  }
+
+  .hero__error--3 {
+    top: 52%;
+    left: auto;
+    right: 4%;
+  }
+
+  .hero__error--4 {
+    top: 78%;
+    left: 2%;
+  }
+
+  .hero__cta {
+    right: 20px;
+    bottom: 32px;
+    width: 104px;
+    height: 104px;
+    transform: none;
+  }
+
+  .hero__cta:hover,
+  .hero__cta:focus-visible {
+    transform: scale(1.05);
+  }
+}
+
+/* Sin movimiento cuando el sistema lo pide */
+@media (prefers-reduced-motion: reduce) {
+
+  .hero__error,
+  .hero__cta-grafico {
+    animation: none;
+  }
+
+  .hero__titulo,
+  .hero__cta {
+    transition: none;
+  }
+}
+
 
 /* ======================================
             SECCIÓN: EL RETO
@@ -616,4 +1034,16 @@ body {
     line-height: 1.6;
   }
 
+}
+
+/* Navegación en móviles pequeños */
+@media (max-width: 359px) {
+  .encabezado__nav {
+    justify-content: flex-start;
+    gap: 12px 16px;
+  }
+
+  .hero {
+    padding-top: 160px;
+  }
 }
