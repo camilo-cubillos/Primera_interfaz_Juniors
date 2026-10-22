@@ -619,10 +619,12 @@ body {
   gap: 6px;
 }
  
-.pie__marca img {
-  display: block;
-  width: 96px;
-  height: auto;
+.pie__logo {
+  font-family: "Hanken Grotesk", sans-serif;
+  font-size: 1.375rem;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--color-azul);
 }
  
 /* Dominio y productos */
