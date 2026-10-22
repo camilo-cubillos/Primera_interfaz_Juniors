@@ -43,6 +43,9 @@
     <!-- Sección: Hero | Responsable: Daniel -->
     <section id="inicio" class="hero" aria-labelledby="hero-titulo">
 
+      <!-- Error decorativo fuera de la capa: en móvil queda encima del titular -->
+      <span class="hero__error hero__error--claro hero__error--1" aria-hidden="true">TypeError: undefined is not a function</span>
+
       <!-- Contenido principal -->
       <div class="hero__contenido">
 
@@ -60,7 +63,6 @@
 
       <!-- Errores flotantes (decorativos) -->
       <div class="hero__errores" aria-hidden="true">
-        <span class="hero__error hero__error--claro hero__error--1">TypeError: undefined is not a function</span>
         <span class="hero__error hero__error--azul hero__error--2">CORS policy: blocked</span>
         <span class="hero__error hero__error--profundo hero__error--3">Segmentation fault</span>
         <span class="hero__error hero__error--claro hero__error--4">Cannot connect to database</span>
