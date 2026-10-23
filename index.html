@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
   <link
-    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,200..700,0..100,0..1&family=Hanken+Grotesk:wght@400;500;600;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,200..700,0..100,0..1&family=Hanken+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap"
     rel="stylesheet">
 
   <link rel="stylesheet" href="./style.css">
@@ -312,11 +312,76 @@
     </section>
 
 
-    <!-- Sección: Contacto | Responsable: Nicolle -->
+    <!-- Sección: Contacto | Responsable: Daniel -->
+    <section id="contacto" class="contacto">
+
+      <div class="contacto__contenedor">
+
+        <!-- Columna izquierda: invitación -->
+        <div class="contacto__contenido">
+          <span class="contacto__sobretitulo">CONTACTO</span>
+          <h2 class="contacto__titulo">
+            ¿Tienes algo que necesitas resolver o entregar?
+          </h2>
+
+          <p>
+            <span class="contacto__texto-largo">Cuéntanos qué está pasando, qué necesitas y en qué punto te encuentras.
+              Revisaremos tu contexto y te diremos con claridad si Juniors puede ayudarte y cuál de nuestros dos caminos
+              tiene más sentido para ti.</span>
+            <span class="contacto__texto-corto">Cuéntanos el contexto. Te diremos con claridad si Juniors puede ayudarte
+              y cuál de los dos caminos tiene sentido.</span>
+          </p>
+
+          <!-- CTA: el destino se agrega en data-destino -->
+          <a class="contacto__boton" href="#" data-destino="" aria-disabled="true">
+            Hablar con Juniors
+          </a>
+
+        </div>
+
+        <!-- Columna derecha: datos de contacto -->
+        <div class="contacto__datos">
+
+          <div class="contacto__dato">
+            <span class="contacto__etiqueta">CORREO</span>
+            <a href="mailto:core@wearejuniors.com">core@wearejuniors.com</a>
+          </div>
+
+          <!-- Redes: agregar los enlaces cuando existan las cuentas -->
+          <div class="contacto__dato">
+            <span class="contacto__etiqueta">REDES</span>
+            <span>@wearejuniors</span>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
 
   </main>
 
-  <!-- Footer | Responsable: Nicolle-->
+  <!-- Footer | Responsable: Daniel -->
+  <footer class="pie">
+
+    <div class="pie__contenedor">
+
+      <!-- Marca y dominio -->
+      <div class="pie__marca">
+        <span class="pie__logo">juniors</span>
+        <span class="pie__dominio">WEAREJUNIORS.COM</span>
+      </div>
+
+      <!-- Productos -->
+      <span class="pie__productos">UNBLOCKS · PODS</span>
+
+    </div>
+
+  </footer>
+
+  <!-- Interacción del contacto -->
+  <script src="./contacto.js" defer></script>
 
 
   <!-- Interacción del hero -->
