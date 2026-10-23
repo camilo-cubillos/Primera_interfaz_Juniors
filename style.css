@@ -1,28 +1,1049 @@
- * { margin:0; padding:0; box-sizing:border-box; }
-    html,body { height:100%; overflow:hidden; background:#000; font-family:monospace; }
+/* ============================================
+          JUNIORS - ESTILOS GENERALES
+   ============================================ */
 
-    /* canvas full-screen */
-    canvas#binaryCanvas {
-      position:fixed;
-      inset:0;            /* top:0; right:0; bottom:0; left:0; */
-      width:100%;
-      height:100%;
-      z-index:0;
-      display:block;
-    }
+:root {
+  --color-fondo: #FAF6EC;
+  --color-azul: #1346AA;
+  --color-azul-profundo: #0A1E54;
+  --color-dorado: #F4C24C;
+  --color-azul-claro: #CBDDF6;
+  --color-texto: #15171c;
 
-    /* texto centrado y visible encima del canvas */
-    .mensaje {
-      position:fixed;
-      top:50%;
-      left:50%;
-      transform:translate(-50%,-50%);
-      color:#00aaff;         /* azul */
-      font-size:3.0rem;
-      font-weight:700;
-      text-align:center;
-      z-index:9999;          /* importante: muy por encima */
-      pointer-events:none;
-      -webkit-text-stroke: 0.5px rgba(0,0,0,0.2);
-      text-shadow: 0 0 20px rgba(0, 170, 255, 0.837);
-    }
+  /* Movimiento y sonrisa: copiados de brand-design/tokens/juniors-tokens.css */
+  --dur-rapida: 200ms;
+  --dur-lenta: 500ms;
+  --ease-entrada: cubic-bezier(.16, 1, .3, 1);
+  --ease-ui: cubic-bezier(.33, 1, .68, 1);
+  --desplazamiento-bloque: 16px;
+  --fraunces-recta: "opsz" 60, "SOFT" 0, "WONK" 0;
+  --fraunces-sonrisa: "opsz" 120, "SOFT" 60, "WONK" 1;
+}
+
+/* Reinicio básico de estilos */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
+  font-family: "Hanken Grotesk", sans-serif;
+  min-height: 100vh;
+}
+
+/* Desplazamiento suave entre secciones */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Accesibility */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+
+/* ======================================
+            SECCIÓN: HEADER
+   ====================================== */
+
+.encabezado {
+  position: absolute;
+  inset: 0 0 auto 0;
+  z-index: 10;
+  width: 100%;
+  max-width: 1048px;
+  margin: 0 auto;
+  padding: 28px 24px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+/* Logotipo blanco */
+.encabezado__logo img {
+  display: block;
+  width: 116px;
+  height: auto;
+}
+
+/* Navegación principal */
+.encabezado__nav {
+  display: flex;
+  gap: 32px;
+}
+
+/* Enlaces de la navegación */
+.encabezado__nav a {
+  font-family: "Hanken Grotesk", sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #FFFFFF;
+  text-decoration: none;
+  opacity: 0.85;
+  transition: opacity var(--dur-rapida) var(--ease-ui);
+}
+
+/* Enlace activo al pasar el cursor o con teclado */
+.encabezado__nav a:hover,
+.encabezado__nav a:focus-visible {
+  opacity: 1;
+  text-decoration: underline;
+  text-underline-offset: 6px;
+}
+
+
+/* ======================================
+            SECCIÓN: HERO
+   ====================================== */
+
+.hero {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100svh;
+  padding: 100px 24px;
+  background-color: var(--color-azul);
+  color: #FFFFFF;
+  overflow: hidden;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Contenedor: toma el ancho del titular y queda centrado */
+.hero__contenido {
+  --titulo-tamano: clamp(3.5rem, 15.7vw, 13rem);
+
+  position: relative;
+  z-index: 2;
+  width: fit-content;
+}
+
+/* Titular y su copia invisible en la misma celda */
+.hero__titular {
+  display: grid;
+}
+
+.hero__titular>.hero__titulo {
+  grid-area: 1 / 1;
+  justify-self: center;
+}
+
+/* Título principal: ¿Bloqueado? */
+.hero__titulo {
+  font-family: "Fraunces", Georgia, serif;
+  font-size: var(--titulo-tamano);
+  font-weight: 200;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+  font-variation-settings: var(--fraunces-recta);
+  transition: font-variation-settings 800ms cubic-bezier(.45, 0, .25, 1);
+}
+
+/* Sonrisa de Fraunces al pasar el cursor */
+.hero__titulo:hover {
+  font-variation-settings: var(--fraunces-sonrisa);
+}
+
+/* Copia invisible: solo reserva el ancho en reposo */
+.hero__titulo--medida {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* Subtítulo */
+.hero__subtitulo {
+  max-width: 12.5em;
+  margin-top: calc(var(--titulo-tamano) * 0.3);
+  padding-left: calc(var(--titulo-tamano) * 0.045);
+  font-family: "Hanken Grotesk", sans-serif;
+  font-size: clamp(1.125rem, 2vw, 1.5rem);
+  line-height: 1.35;
+}
+
+
+/* ========================================
+   HERO - ERRORES FLOTANTES
+   ======================================== */
+
+/* Capa de errores sobre el hero */
+.hero__errores {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+}
+
+/* Etiqueta de error */
+.hero__error {
+  position: absolute;
+  padding: 10px 16px;
+  border-radius: 12px;
+  font-family: "Hanken Grotesk", sans-serif;
+  font-size: clamp(0.75rem, 1.1vw, 0.9375rem);
+  font-weight: 500;
+  white-space: nowrap;
+  box-shadow: 0 8px 24px rgba(10, 30, 84, 0.25);
+  rotate: var(--giro, 0deg);
+
+  animation:
+    hero-error-entrada var(--dur-lenta) var(--ease-entrada) backwards,
+    hero-error-flota var(--ciclo, 7s) ease-in-out infinite alternate;
+  animation-delay: var(--retraso, 0ms), calc(var(--retraso, 0ms) + var(--dur-lenta));
+}
+
+/* Colores de las etiquetas */
+.hero__error--claro {
+  background-color: #FFFFFF;
+  color: var(--color-azul-profundo);
+}
+
+.hero__error--azul {
+  background-color: var(--color-azul-claro);
+  color: var(--color-azul-profundo);
+}
+
+.hero__error--profundo {
+  background-color: var(--color-azul-profundo);
+  color: #FFFFFF;
+}
+
+/* Posiciones tomadas del diseño aprobado */
+.hero__error--1 {
+  top: 19%;
+  left: 70%;
+  --giro: 4deg;
+  --ciclo: 7s;
+  --retraso: 0ms;
+}
+
+.hero__error--2 {
+  top: 38%;
+  left: 52%;
+  --giro: -5deg;
+  --ciclo: 8.5s;
+  --retraso: 60ms;
+}
+
+.hero__error--3 {
+  top: 53%;
+  left: 82%;
+  --giro: -3deg;
+  --ciclo: 6.5s;
+  --retraso: 120ms;
+}
+
+.hero__error--4 {
+  top: 70%;
+  left: 50%;
+  --giro: 3deg;
+  --ciclo: 9s;
+  --retraso: 180ms;
+}
+
+/* Entrada de las etiquetas */
+@keyframes hero-error-entrada {
+  from {
+    opacity: 0;
+    translate: 0 var(--desplazamiento-bloque);
+  }
+
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
+/* Flotación mínima en ciclos lentos */
+@keyframes hero-error-flota {
+  from {
+    translate: 0 0;
+    rotate: var(--giro, 0deg);
+  }
+
+  50% {
+    translate: 5px -6px;
+  }
+
+  to {
+    translate: -3px -11px;
+    rotate: calc(var(--giro, 0deg) + 1.5deg);
+  }
+}
+
+
+/* ========================================
+   HERO - CTA CIRCULAR
+   ======================================== */
+
+/* Botón circular */
+.hero__cta {
+  position: absolute;
+  right: max(24px, calc((100% - 1200px) / 2 + 24px));
+  bottom: 48px;
+  z-index: 4;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background-color: var(--color-azul-claro);
+  color: var(--color-azul-profundo);
+  text-decoration: none;
+  transition: transform var(--dur-rapida) var(--ease-ui);
+
+  display: grid;
+  place-items: center;
+}
+
+/* Botón al pasar el cursor o con teclado */
+.hero__cta:hover,
+.hero__cta:focus-visible {
+  transform: scale(1.05);
+}
+
+.hero__cta:focus-visible {
+  outline: 3px solid var(--color-dorado);
+  outline-offset: 4px;
+}
+
+/* Gráfico del texto circular: gira lento */
+.hero__cta-grafico {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  animation: hero-cta-gira 30s linear infinite;
+}
+
+/* Texto alrededor del círculo */
+.hero__cta-texto {
+  fill: currentColor;
+  font-family: "Hanken Grotesk", sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+}
+
+/* Flecha */
+.hero__cta-flecha {
+  width: 32px;
+  height: 32px;
+}
+
+.hero__cta-flecha path {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Giro del texto circular */
+@keyframes hero-cta-gira {
+  to {
+    rotate: 360deg;
+  }
+}
+
+
+/* ==================================
+      HEADER + HERO - RESPONSIVE
+   ================================== */
+
+@media (max-width: 768px) {
+
+  .encabezado {
+    padding: 28px 20px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .encabezado__nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px 4px;
+  }
+
+  /* Contenido arriba y errores debajo, en el flujo: nunca se cruzan */
+  .hero {
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    padding: 120px 20px 168px;
+  }
+
+  /* Titular alineado a la izquierda con el logotipo */
+  .hero__contenido {
+    width: 100%;
+  }
+
+  .hero__titular>.hero__titulo {
+    justify-self: start;
+  }
+
+  /* Capa de errores debajo del subtítulo */
+  .hero__errores {
+    position: relative;
+    inset: auto;
+    height: 260px;
+    margin-top: 40px;
+  }
+
+  .hero__error--1 {
+    top: 0;
+    left: auto;
+    right: 0;
+  }
+
+  .hero__error--2 {
+    top: 26%;
+    left: 0;
+  }
+
+  .hero__error--3 {
+    top: 52%;
+    left: auto;
+    right: 4%;
+  }
+
+  .hero__error--4 {
+    top: 78%;
+    left: 2%;
+  }
+
+  .hero__cta {
+    right: 20px;
+    bottom: 32px;
+    width: 104px;
+    height: 104px;
+    transform: none;
+  }
+
+  .hero__cta:hover,
+  .hero__cta:focus-visible {
+    transform: scale(1.05);
+  }
+}
+
+/* Sin movimiento cuando el sistema lo pide */
+@media (prefers-reduced-motion: reduce) {
+
+  .hero__error,
+  .hero__cta-grafico {
+    animation: none;
+  }
+
+  .hero__titulo,
+  .hero__cta {
+    transition: none;
+  }
+}
+
+
+/* ======================================
+            SECCIÓN: EL RETO
+   ====================================== */
+
+.reto {
+  width: 100%;
+  padding: 80px 24px;
+  background-color: #FFFFFF;
+  min-height: auto;
+  display: flex;
+  align-items: center;
+}
+
+/* Contenedor principal */
+.reto__contenedor {
+  max-width: 1200px;
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 64px;
+  width: 100%;
+}
+
+/* Columna izquierda */
+.reto__visual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+}
+
+/* Columna derecha */
+.reto__contenido {
+  min-width: 0;
+}
+
+/* Etiqueta superior: EL RETO DEL MERCADO */
+.reto__etiqueta {
+  display: block;
+  margin-bottom: 16px;
+  font-family: "Hanken Grotesk", sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #1346AA;
+}
+
+/* ==================================
+      EL RETO - RESPONSIVE
+   ================================== */
+
+@media (max-width: 900px) {
+
+  .reto {
+    width: 100%;
+    padding: 60px 20px;
+  }
+
+  .reto__contenedor {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 40px;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .reto__visual,
+  .reto__contenido {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .reto__grafico {
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+    margin: 0 auto;
+  }
+
+  .reto__contenido h2 {
+    font-size: clamp(1.8rem, 8vw, 2.5rem);
+    line-height: 1.15;
+    overflow-wrap: break-word;
+  }
+
+  .reto__contenido p {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  .reto__lista li {
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+}
+
+
+/* ===================================
+     EL RETO - CONTENIDO
+   =================================== */
+
+/*  Título principal */
+.reto__contenido h2 {
+  font-family: "Fraunces", Georgia, serif;
+  font-size: clamp(2rem, 3.5vw, 3.25rem);
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  color: var(--color-azul-profundo);
+  margin-bottom: 28px;
+}
+
+/* Segunda parte del titulo */
+.reto__titulo-destacado {
+  color: var(--color-azul);
+}
+
+/* Párrafos */
+.reto__contenido p {
+  font-size: 1.125rem;
+  line-height: 1.75;
+  color: var(--color-texto);
+  margin-bottom: 20px;
+}
+
+/* Separación del mensaje de cierre */
+.reto__contenido p+p {
+  margin-top: 16px
+}
+
+/* Lista de los tres principios */
+.reto__lista {
+  list-style: none;
+  margin-top: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border-top: 1px solid #E6E1D8;
+}
+
+/* Separadores entre los puntos */
+
+/* Elementos y separadores de la lista */
+.reto__lista li {
+  position: relative;
+  padding: 16px 0 16px 28px;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--color-azul-profundo);
+  border-bottom: 1px solid #E6E1DB;
+}
+
+
+/* Indicadores de verificación */
+.reto__lista li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 20px;
+  height: 20px;
+
+  border: 1.5px solid var(--color-azul);
+  border-radius: 50%;
+
+  color: var(--color-azul);
+  background-color: transparent;
+
+  font-family: Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+/* Ajustes para dispositivos móviles */
+@media (max-width: 768px) {
+  .reto__contenido h2 {
+    margin-bottom: 24px;
+  }
+
+  .reto__contenido p {
+    font-size: 1rem;
+  }
+
+  .reto__lista li {
+    font-size: 1rem;
+  }
+}
+
+
+/* ========================================
+   EL RETO - COMPOSICIÓN CIRCULAR
+   ======================================== */
+
+/* Gráfico principal */
+.reto__grafico {
+  display: block;
+  width: 100%;
+  max-width: 460px;
+  height: auto;
+  overflow: visible;
+}
+
+/* Texto alrededor del círculo */
+.reto__texto-circular {
+  fill: var(--color-azul-profundo);
+  font-family: "Hanken Grotesk", sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 3px;
+}
+
+/* Mensaje del centro */
+.reto__texto-central {
+  fill: var(--color-azul);
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 28px;
+  font-weight: 500;
+}
+
+/* Fondo de la flecha */
+.reto__flecha-fondo {
+  fill: var(--color-azul);
+}
+
+/* Flecha */
+.reto__flecha {
+  fill: none;
+  stroke: #FFFFFF;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Adaptación móvil */
+@media (max-width: 768px) {
+  .reto__grafico {
+    max-width: 300px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .reto {
+    min-height: auto;
+    display: block;
+  }
+}
+
+/* Frases del titulo */
+.reto__titulo-inicial,
+.reto__titulo-destacado {
+  display: block;
+}
+
+
+/* Ajustes finales para móviles */
+@media (max-width: 768px) {
+  .reto__contenido h2 {
+    font-size: clamp(1.8rem, 8vw, 2.5rem);
+    margin-bottom: 24px;
+  }
+
+  .reto__contenido p {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  .reto__contenedor {
+    gap: 24px;
+  }
+}
+
+
+/* ========================================
+   SECCIÓN: SOLUCIONES
+   ======================================== */
+
+.soluciones {
+  width: 100%;
+  padding: 96px 24px;
+  background-color: var(--color-fondo);
+}
+
+/* Contenedor principal */
+.soluciones__contenedor {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Encabezado de la sección */
+.soluciones__encabezado {
+  max-width: 660px;
+  margin-bottom: 48px;
+}
+
+/* Etiqueta superior: SOLUCIONES */
+.soluciones__etiqueta {
+  display: block;
+  margin-bottom: 16px;
+  font-family: "Hanken Grotesk", sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--color-azul);
+}
+
+/* Título principal */
+.soluciones__titulo {
+  font-family: "Fraunces", Georgia, serif;
+  font-size: clamp(2.25rem, 4vw, 3.5rem);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: var(--color-texto);
+}
+
+/* Frase destacada en azul */
+.soluciones__destacado {
+  color: var(--color-azul);
+}
+
+/* Tarjetas en dos columnas */
+.soluciones__tarjetas {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 16px;
+}
+
+/* Tarjeta: Juniors Unblocks */
+.soluciones__tarjeta {
+  background-color: #FFFFFF;
+  border: 1px solid #EAE5DA;
+  border-radius: 16px;
+  padding: 40px;
+  color: var(--color-texto);
+}
+
+/* Tarjeta destacada: Juniors Pods */
+.soluciones__tarjeta--destacada {
+  background-color: var(--color-azul);
+  border-color: var(--color-azul);
+  color: #FFFFFF;
+}
+
+/* Nombre del producto */
+.soluciones__producto {
+  display: block;
+  margin-bottom: 20px;
+  font-family: "Hanken Grotesk", sans-serif;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--color-azul-profundo);
+}
+
+.soluciones__tarjeta--destacada .soluciones__producto {
+  color: var(--color-azul-claro);
+}
+
+/* Títulos de las tarjetas */
+.soluciones__tarjeta h3 {
+  font-family: "Fraunces", Georgia, serif;
+  font-size: clamp(1.5rem, 2.2vw, 2rem);
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--color-azul-profundo);
+  margin-bottom: 16px;
+}
+
+.soluciones__tarjeta--destacada h3 {
+  color: #FFFFFF;
+}
+
+/* Descripciones */
+.soluciones__tarjeta p {
+  font-family: "Hanken Grotesk", sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 28px;
+}
+
+/* Lista de beneficios */
+.soluciones__lista {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Elementos de la lista */
+.soluciones__lista li {
+  position: relative;
+  padding-left: 14px;
+  font-family: "Hanken Grotesk", sans-serif;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+/* Punto separador antes de cada beneficio */
+.soluciones__lista li::before {
+  content: "·";
+  position: absolute;
+  left: 0;
+  font-weight: 700;
+}
+
+
+/* ========================================
+   SOLUCIONES - RESPONSIVE
+   ======================================== */
+
+@media (max-width: 900px) {
+  .soluciones {
+    padding: 60px 20px;
+  }
+
+  .soluciones__encabezado {
+    margin-bottom: 32px;
+  }
+
+  .soluciones__titulo {
+    font-size: clamp(1.8rem, 8vw, 2.5rem);
+  }
+
+  .soluciones__tarjetas {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+  }
+
+  .soluciones__tarjeta {
+    padding: 28px 24px;
+  }
+
+  .soluciones__tarjeta h3 {
+    font-size: 1.5rem;
+  }
+
+  .soluciones__tarjeta p {
+    font-size: 0.9375rem;
+    margin-bottom: 20px;
+  }
+}
+
+
+/* ========================================
+   SECCIÓN: QUIÉNES SOMOS + PRINCIPIOS
+   ======================================== */
+
+.quienes-somos {
+  width: 100%;
+  padding: 64px 24px;
+  background-color: #FFFFFF;
+}
+
+.quienes-somos__contenedor {
+  width: 100%;
+  max-width: 1360px;
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: center;
+  gap: 48px;
+}
+
+.quienes-somos__contenido,
+.quienes-somos__principios {
+  min-width: 0;
+}
+
+
+/* Etiqueta superior: QUIÉNES SOMOS */
+.quienes-somos__etiqueta {
+  display: block;
+  margin-bottom: 20px;
+  font-family: "Hanken Grotesk", sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--color-azul);
+}
+
+/* Título principal */
+.quienes-somos__titulo {
+  font-family: "Fraunces", Georgia, serif;
+  font-size: clamp(2.5rem, 4vw, 4rem);
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: var(--color-texto);
+  margin-bottom: 24px;
+}
+
+/* Frase destacada en azul */
+.quienes-somos__destacado {
+  color: var(--color-azul);
+}
+
+/* Párrafos de presentación */
+.quienes-somos__contenido p {
+  font-family: "Hanken Grotesk", sans-serif;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--color-texto);
+  margin-bottom: 18px;
+}
+
+
+/* Columna derecha: principios */
+.quienes-somos__principios {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Tarjetas */
+.quienes-somos__tarjeta {
+  background-color: #FAF6EC;
+  border: 1px solid #EAE5DA;
+  border-radius: 12px;
+  padding: 32px;
+}
+
+/* Títulos de las tarjetas */
+.quienes-somos__tarjeta h3 {
+  font-family: "Hanken Grotesk", sans-serif;
+  font-size: 1.125rem;
+  font-weight: 700;
+  line-height: 1.4;
+  color: var(--color-texto);
+  margin-bottom: 10px;
+}
+
+/* Descripciones */
+.quienes-somos__tarjeta p {
+  font-family: "Hanken Grotesk", sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--color-texto);
+}
+
+
+/* ========================================
+   QUIÉNES SOMOS - RESPONSIVE
+   ======================================== */
+
+@media (max-width: 900px) {
+  .quienes-somos {
+    padding: 60px 20px;
+  }
+
+  .quienes-somos__contenedor {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 40px;
+  }
+
+
+  .quienes-somos__tarjeta {
+    padding: 24px;
+  }
+
+  .quienes-somos__tarjeta h3 {
+    font-size: 1rem;
+    margin-bottom: 10px;
+  }
+
+  .quienes-somos__tarjeta p {
+    font-size: 0.9375rem;
+    line-height: 1.6;
+  }
+
+}
+
+/* Navegación en móviles pequeños */
+@media (max-width: 359px) {
+  .encabezado__nav {
+    justify-content: flex-start;
+    gap: 12px 16px;
+  }
+
+  .hero {
+    padding-top: 160px;
+  }
+}

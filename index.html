@@ -1,17 +1,326 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-    <link rel="stylesheet" href="styke.css">
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Algo está a punto de comenzar</title>
-  <!--Enlace a css-->
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Juniors | Experiencia que se construye</title>
+
+  <!-- Tipografías de Juniors -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,200..700,0..100,0..1&family=Hanken+Grotesk:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="./style.css">
 </head>
+
 <body>
-  <canvas id="binaryCanvas"></canvas>
-  <div class="mensaje">Algo está a punto de comenzar...</div>
-  <!--Enlace a JavaScript-->
-  <script src="script.js"></script>
+
+  <!-- Header | Responsable: Daniel -->
+  <header class="encabezado">
+
+    <!-- Logotipo -->
+    <a class="encabezado__logo" href="#inicio" aria-label="Juniors, ir al inicio">
+      <img src="./assets/logotipo-blanco.png" alt="Juniors" width="600" height="155">
+    </a>
+
+    <!-- Navegación principal -->
+    <nav class="encabezado__nav" aria-label="Navegación principal">
+      <a href="#el-reto">El reto</a>
+      <a href="#soluciones">Soluciones</a>
+      <a href="#quienes-somos">Quiénes somos</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+
+  </header>
+
+  <main>
+
+    <!-- Sección: Hero | Responsable: Daniel -->
+    <section id="inicio" class="hero" aria-labelledby="hero-titulo">
+
+      <!-- Contenido principal -->
+      <div class="hero__contenido">
+
+        <!-- Titular: la copia invisible reserva el ancho para que la sonrisa no mueva el subtítulo -->
+        <div class="hero__titular">
+          <span class="hero__titulo hero__titulo--medida" aria-hidden="true">¿Bloqueado?</span>
+          <h1 id="hero-titulo" class="hero__titulo">¿Bloqueado?</h1>
+        </div>
+
+        <p class="hero__subtitulo">
+          Resuélvelo con alguien que ya pasó por ahí.
+        </p>
+
+      </div>
+
+      <!-- Errores flotantes (decorativos) -->
+      <div class="hero__errores" aria-hidden="true">
+        <span class="hero__error hero__error--claro hero__error--1">TypeError: undefined is not a function</span>
+        <span class="hero__error hero__error--azul hero__error--2">CORS policy: blocked</span>
+        <span class="hero__error hero__error--profundo hero__error--3">Segmentation fault</span>
+        <span class="hero__error hero__error--claro hero__error--4">Cannot connect to database</span>
+      </div>
+
+      <!-- CTA principal: el destino se agrega en data-destino -->
+      <a class="hero__cta" href="#" data-destino="" aria-label="Agendar sesión" aria-disabled="true">
+
+        <svg class="hero__cta-grafico" viewBox="0 0 120 120" aria-hidden="true">
+
+          <!-- Trayectoria circular -->
+          <defs>
+            <path id="hero-ruta-circular" d="M 60,60 m -46,0
+                    a 46,46 0 1,1 92,0
+                    a 46,46 0 1,1 -92,0" />
+          </defs>
+
+          <!-- Texto alrededor del círculo -->
+          <text class="hero__cta-texto">
+            <textPath href="#hero-ruta-circular" textLength="289" lengthAdjust="spacing">
+              AGENDAR SESIÓN · AGENDAR SESIÓN ·
+            </textPath>
+          </text>
+
+        </svg>
+
+        <!-- Flecha -->
+        <svg class="hero__cta-flecha" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M7 17 L17 7 M8 7 H17 V16" />
+        </svg>
+
+      </a>
+
+    </section>
+
+    <!-- Sección: El reto -->
+    <section id="el-reto" class="reto">
+
+      <div class="reto__contenedor">
+
+        <!-- Composición visual -->
+
+        <div class="reto__visual">
+
+          <svg class="reto__grafico" viewBox="0 0 400 400" role="img" aria-labelledby="reto-grafico-titulo">
+            <title id="reto-grafico-titulo">
+              Juniors rompe el ciclo de la falta de experiencia
+            </title>
+
+            <!-- Trayectoria circular -->
+            <defs>
+              <path id="reto-ruta-circular" d="M 200,200 m -145,0
+                      a 145,145 0 1,1 290,0
+                      a 145,145 0 1,1 -290,0" />
+            </defs>
+
+            <!-- Texto alrededor del círculo -->
+            <text class="reto__texto-circular">
+              <textPath href="#reto-ruta-circular" textLength="897" lengthAdjust="spacing">
+                SIN EXPERIENCIA · SIN OPORTUNIDADES · SIN EXPERIENCIA · SIN OPORTUNIDAD ·
+              </textPath>
+            </text>
+
+            <!-- Mensaje central -->
+            <text x="200" y="188" text-anchor="middle" class="reto__texto-central">
+              <tspan x="200" dy="0">Juniors</tspan>
+              <tspan x="200" dy="30">rompe el</tspan>
+              <tspan x="200" dy="30">ciclo.</tspan>
+            </text>
+
+            <!-- Fondo de la flecha -->
+            <circle cx="330" cy="70" r="25" class="reto__flecha-fondo" />
+
+            <!-- Flecha -->
+            <path d="M318 82 L342 58 M324 58 H342 V76" class="reto__flecha" />
+
+          </svg>
+
+        </div>
+
+        <!-- Contenido de la sección -->
+        <div class="reto__contenido">
+
+          <span class="reto__etiqueta">EL RETO DEL MERCADO</span>
+          <h2>
+            <span class="reto__titulo-inicial">
+              Te piden experiencia.
+            </span>
+            <span class="reto__titulo-destacado">
+              Pero pocas veces te dejan construirla.
+            </span>
+          </h2>
+
+          <p>
+            El talento junior necesita algo más que conocimiento:
+            necesita enfrentarse a problemas reales, recibir
+            criterio de personas experimentadas y generar
+            evidencia de lo que sabe hacer.
+          </p>
+
+          <p>Juniors crea ese espacio.</p>
+
+          <ul class="reto__lista">
+            <li>Trabajo real que genera evidencia.</li>
+            <li>Supervisión de profesionales experimentados.</li>
+            <li>Criterios claros para saber qué significa entregar bien.</li>
+          </ul>
+
+        </div>
+
+      </div>
+
+
+    </section>
+
+    <!-- Sección: Soluciones | Responsable: Daniel -->
+    <section id="soluciones" class="soluciones">
+
+      <div class="soluciones__contenedor">
+
+        <!-- Encabezado de la sección -->
+        <div class="soluciones__encabezado">
+
+          <span class="soluciones__etiqueta">SOLUCIONES</span>
+
+          <h2 class="soluciones__titulo">
+            Dos soluciones. Una misma idea:
+            <span class="soluciones__destacado">avanzar con supervisión.</span>
+          </h2>
+
+        </div>
+
+        <!-- Tarjetas de las dos soluciones -->
+        <div class="soluciones__tarjetas">
+
+          <!-- Juniors Unblocks -->
+          <article class="soluciones__tarjeta">
+
+            <span class="soluciones__producto">JUNIORS UNBLOCKS</span>
+
+            <h3>Trae tu bloqueo. Sal sabiendo qué hacer.</h3>
+
+            <p>
+              Desbloqueo técnico en vivo con un profesional experimentado,
+              sobre tu problema real y con próximos pasos claros.
+            </p>
+
+            <ul class="soluciones__lista">
+              <li>Diagnóstico sobre el contexto real</li>
+              <li>Comprensión, no solo respuesta</li>
+              <li>Próximos pasos por escrito</li>
+            </ul>
+
+          </article>
+
+          <!-- Juniors Pods -->
+          <article class="soluciones__tarjeta soluciones__tarjeta--destacada">
+
+            <span class="soluciones__producto">JUNIORS PODS</span>
+
+            <h3>Capacidad de entrega supervisada.</h3>
+
+            <p>
+              Equipos junior supervisados que entregan trabajo real para empresas.
+              Juniors responde por selección, proceso y calidad.
+            </p>
+
+            <ul class="soluciones__lista">
+              <li>Liderazgo senior incluido</li>
+              <li>Criterios de aceptación claros</li>
+              <li>Trabajo real y verificable</li>
+            </ul>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- Sección: Quiénes somos + Principios | Responsable: Camilo -->
+    <section id="quienes-somos" class="quienes-somos">
+      <div class="quienes-somos__contenedor">
+
+        <!-- Columna izquierda: presentación -->
+        <div class="quienes-somos__contenido">
+
+          <span class="quienes-somos__etiqueta">
+            QUIÉNES SOMOS
+          </span>
+
+          <h2 class="quienes-somos__titulo">
+            Cálidos por naturaleza.
+            <span class="quienes-somos__destacado">
+              Serios por decisión.
+            </span>
+          </h2>
+
+          <p>
+            Juniors crea espacios donde el talento junior trabaja
+            sobre problemas reales con acompañamiento de profesionales
+            experimentados.
+          </p>
+
+          <p>
+            A través de Unblocks y Pods conectamos talento,
+            experiencia y necesidades reales para convertir
+            potencial en evidencia.
+          </p>
+
+        </div>
+
+        <!-- Columna derecha: principios -->
+        <div class="quienes-somos__principios">
+
+          <article class="quienes-somos__tarjeta">
+            <h3>Problemas reales</h3>
+            <p>
+              La experiencia se construye enfrentando situaciones
+              reales, tomando decisiones y entendiendo las
+              consecuencias de lo que se hace.
+            </p>
+          </article>
+
+          <article class="quienes-somos__tarjeta">
+            <h3>Supervisión real</h3>
+            <p>
+              Nadie debería avanzar completamente a ciegas.
+              Profesionales experimentados aportan criterio,
+              acompañamiento y revisión durante el proceso.
+            </p>
+          </article>
+
+          <article class="quienes-somos__tarjeta">
+            <h3>Evidencia antes que discurso</h3>
+            <p>
+              Preferimos mostrar lo que se puede resolver,
+              construir y entregar antes que depender únicamente
+              de lo que alguien dice saber.
+            </p>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- Sección: Contacto | Responsable: Nicolle -->
+
+  </main>
+
+  <!-- Footer | Responsable: Nicolle-->
+
+
+  <!-- Interacción del hero -->
+  <script src="./hero.js" defer></script>
 </body>
+
 </html>
